@@ -113,8 +113,8 @@ class ContouringAlgorithm(Algorithm):
 
         contours = self._filter_contours(contours)
 
-        if len(contours) != 1:
-            raise VectorizationError("_find_class_contours: Number of contours must be equal to 1.")
+        #if len(contours) != 1:
+        #    raise VectorizationError("_find_class_contours: Number of contours must be equal to 1.")
 
         return contours[0]
 
