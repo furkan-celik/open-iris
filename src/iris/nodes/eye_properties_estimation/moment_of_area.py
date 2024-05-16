@@ -29,7 +29,7 @@ class MomentOfArea(Algorithm):
 
     __parameters_type__ = Parameters
 
-    def __init__(self, eccentricity_threshold: float = 0.1) -> None:
+    def __init__(self, eccentricity_threshold: float = 0.01) -> None:
         """Assign parameters.
 
         Args:
@@ -54,12 +54,12 @@ class MomentOfArea(Algorithm):
         """
         moments = cv2.moments(geometries.eyeball_array)
 
-        eccentricity = math_utils.eccentricity(moments)
-        if eccentricity < self.params.eccentricity_threshold:
-            raise EyeOrientationEstimationError(
-                "The eyeball is too circular to reliably determine its orientation. "
-                f"Computed eccentricity: {eccentricity}. Threshold: {self.params.eccentricity_threshold}"
-            )
+        #eccentricity = math_utils.eccentricity(moments)
+        #if eccentricity < self.params.eccentricity_threshold:
+        #    raise EyeOrientationEstimationError(
+        #        "The eyeball is too circular to reliably determine its orientation. "
+        #        f"Computed eccentricity: {eccentricity}. Threshold: {self.params.eccentricity_threshold}"
+        #    )
 
         orientation = math_utils.orientation(moments)
         return EyeOrientation(angle=orientation)
