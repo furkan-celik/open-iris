@@ -64,9 +64,9 @@ class PupilIrisPropertyCalculator(Algorithm):
         pupil_diameter = geometries.pupil_diameter
 
         if pupil_diameter < self.params.min_pupil_diameter:
-            raise PupilIrisPropertyEstimationError("Pupil diameter is too small!")
+            raise PupilIrisPropertyEstimationError(f"Pupil diameter is too small! Found diameter: {pupil_diameter}, threshold: {self.params.min_pupil_diameter}")
         if iris_diameter < self.params.min_iris_diameter:
-            raise PupilIrisPropertyEstimationError("Iris diameter is too small!")
+            raise PupilIrisPropertyEstimationError(f"Iris diameter is too small!, Found diameter: {iris_diameter}, theshold: {self.params.min_iris_diameter}")
         if pupil_diameter >= iris_diameter:
             raise PupilIrisPropertyEstimationError("Pupil diameter is larger than/equal to Iris diameter!")
         if eye_centers.center_distance * 2 >= iris_diameter:
